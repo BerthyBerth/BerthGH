@@ -156,11 +156,11 @@
 	// Exploit-Based Main Menu
 	ExploitBasedToolsMenu = function()
 
-	clear_screen()
+		clear_screen()
 
-	PrintBanner()
+		PrintBanner()
 
-	print("\n" + Style.Size(Style.Underline(Style.Bold("Exploit Based Tools")), 19))
+		print("\n" + Style.Size(Style.Underline(Style.Bold("Exploit Based Tools")), 19))
 
 		if GeneralVariables.rhost != null then print("\n> RHOST : " + GeneralVariables.rhost)
 
@@ -173,7 +173,7 @@
 		choice = user_input("> ").lower
 
 		if choice == "se" then
-			ScanAndExploitMenu()
+			ScanAndExploit.Menu()
 		else if choice == "sl" then
 
 		else if choice == "mm" then
@@ -188,8 +188,10 @@
 
 	// --------------------
 
+	ScanAndExploit = {}
+
 	// Scan and Exploit fonctionality in Exploit-Based category
-	ScanAndExploitMenu = function()
+	ScanAndExploit.Menu = function()
 
 		clear_screen()
 
@@ -197,7 +199,11 @@
 
 		print("\n" + Style.Size(Style.Underline(Style.Bold("Remote Scan & Exploit")), 19))
 
-		if GeneralVariables.rhost != null then print("\n> RHOST : " + GeneralVariables.rhost)
+		if GeneralVariables.rhost != null then
+			print("\n> RHOST : " + GeneralVariables.rhost)
+		else
+			print("\n> RHOST not set, do HELP to get informations.")
+		end if
 
 		print("\n" + Style.Bold("[EB]") + " Exploit-Based Tools")
 		print(Style.Bold("[MM]") + " Main Menu")
@@ -213,21 +219,36 @@
 		else if choice == "mm" then
 			MainMenu()
 		else
-			CheckIfInputIsSet()
+			CheckIfInputIsSet(choice)
 			CheckIfInputIsHelp(choice)
-			ScanAndExploit()
+			ScanAndExploit.Menu()
 		end if
 
 	end function
 
 	// --------------------
 
-	ScanAndExploit = {}
-	ScanAndExploit.Menu = function()
+	GetMetaLibFromIpAndPort = function(ip, port)
 
-		
+		if not port or not ip or is_valid_ip(ip) == false then return
+
+		return metax.net_use(ip, port.to_int).dump_lib
 
 	end function
+
+	ScanMetaLibForMemoryAddresses = function(lib)
+
+		return metax.scan(lib)
+
+	end function
+
+	ScanMemoryAddressForExploits = function(lib, memoryAddress)
+
+		return metax.scan_address(lib, memoryAddress)
+
+	end function
+
+	// --------------------
 
 	// Checking if user have theses libs at launch or exits
 	crypto = IncludeLib("crypto.so")
