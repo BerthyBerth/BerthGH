@@ -14,7 +14,7 @@
 
 		print("\n     ____            _   _     \n    |  _ \          | | | |    \n    | |_) | ___ _ __| |_| |__  \n    |  _ < / _ \ '__| __| '_ \ \n    | |_) |  __/ |  | |_| | | |\n    |____/ \___|_|   \__|_| |_|")
 		print("\nGitHub repository : https://github.com/Fenyco/BerthGH")
-		print("Version : 0.1.0")	
+		print("Version : 0.1.0")
 
 	end function
 
@@ -63,7 +63,7 @@
 			end if
 
 		end if
-		
+
 	end function
 
 	GeneralVariables = {}
@@ -201,6 +201,8 @@
 
 		if GeneralVariables.rhost != null then
 			print("\n> RHOST : " + GeneralVariables.rhost)
+
+			
 		else
 			print("\n> RHOST not set, do HELP to get informations.")
 		end if
