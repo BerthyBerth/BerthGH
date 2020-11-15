@@ -1,0 +1,11 @@
+Operators Symbols (GH) :
+    AND = &
+    OR = |
+    XOR = ^
+    Logical Right Shift = >>>
+    Arithmetic Shifts = <<, >>
+
+What is an Arithmetic Shift ?
+    operator >>
+    input : 1101
+    output : 1110

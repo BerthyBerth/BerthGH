@@ -68,6 +68,7 @@
 
 	GeneralVariables = {}
 	GeneralVariables.rhost = null
+	GeneralVariables.rhost_ports_exploits = {}
 
 	// --------------------
 	// Functions to code faster the fonts
