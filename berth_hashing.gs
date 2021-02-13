@@ -18,7 +18,7 @@ Hash = function(_data)
     blocks = []
     // Define current block index
     current_block_index = 0
-    // Defined current block value
+    // Define current block value
     current_block_value = ""
 
     print(amount_blocks)
